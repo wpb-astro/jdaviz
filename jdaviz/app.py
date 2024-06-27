@@ -798,6 +798,9 @@ class Application(VuetifyTemplate, HubListener):
         self.loading = True
         try:
             try:
+                if "s3" in file_obj:
+                    print("Attempting to load from S3, go ahead and try it.")
+                    continue
                 # Properly form path and check if a valid file
                 file_obj = pathlib.Path(file_obj)
                 if not file_obj.exists():
